@@ -12,7 +12,32 @@ document.addEventListener('DOMContentLoaded', function () {
 		touchpadSupport: true,
 	})
 })
+document.addEventListener('DOMContentLoaded', function () {
+	document.getElementById('burger').addEventListener('click', function () {
+		document.querySelector('.header').classList.toggle('open')
+	})
+})
+	// Закриття меню при кліку на посилання
+	document.querySelectorAll('.header__menu-link').forEach(link => {
+		link.addEventListener('click', () => {
+			document.querySelector('.header').classList.remove('open')
+		})
+	})
+function toggleMenu() {
+	const menu = document.querySelector('.menu')
+	const header = document.querySelector('.header')
 
+	menu.classList.toggle('active')
+	header.classList.toggle('open')
+}
+
+document.querySelectorAll('.menu__link').forEach(link => {
+	link.addEventListener('click', () => {
+		document.querySelector('.menu').classList.remove('active')
+		document.querySelector('.header').classList.remove('open')
+	})
+
+})
 
 document.addEventListener('DOMContentLoaded', function () {
 	function onScroll() {
@@ -31,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		let titleTrigger = windowHeight * 0.75 // Заголовок з'являється при 75%
 		let textTrigger = windowHeight * 0.9 // Текст з'являється при 50%
 		let imgTrigger = windowHeight * 0.75 // Картинка з'являється при 75%
-		let borderTrigger = windowHeight * 0.90 // Лінія з'являється при 80%
+		let borderTrigger = windowHeight * 0.9 // Лінія з'являється при 80%
 
 		if (titleRect.top < titleTrigger) {
 			title.classList.add('visible-title')
@@ -50,8 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	window.addEventListener('scroll', onScroll)
 	onScroll() // Викликаємо одразу для елементів, які вже у видимій зоні
 })
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
 	function onScroll() {
@@ -88,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	onScroll() // Запускаємо одразу для елементів у видимій зоні
 })
 
-
 document.addEventListener('DOMContentLoaded', function () {
 	function onScroll() {
 		const title = document.querySelector('.nowadays__title')
@@ -100,13 +122,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Тригери для тайтлу і текстів
 		const triggerTitle = windowHeight * 0.92
-		const triggerText = windowHeight * 0.90
-				const triggerImg = windowHeight * 0.8
+		const triggerText = windowHeight * 0.9
+		const triggerImg = windowHeight * 0.8
 
-const imgRect = img.getBoundingClientRect()
-if (imgRect.top < triggerImg) {
-	img.classList.add('visible-now-img')
-}
+		const imgRect = img.getBoundingClientRect()
+		if (imgRect.top < triggerImg) {
+			img.classList.add('visible-now-img')
+		}
 		if (titleRect.top < triggerTitle) {
 			title.classList.add('visible-title')
 		}
@@ -169,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	checkScroll() // Перевірка при завантаженні сторінки
 })
 
-
 document.addEventListener('DOMContentLoaded', function () {
 	let hasAnimated = false
 
@@ -188,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	checkScroll() // Перевірка при завантаженні сторінки
 })
 
-
 document.addEventListener('scroll', function () {
 	let scrollTop = window.scrollY
 	let parallaxSpeed = 0.5 // Чим менше значення, тим повільніше рухається фон
@@ -198,7 +218,6 @@ document.addEventListener('scroll', function () {
 		scrollTop * parallaxSpeed
 	}px)`
 })
-
 
 document.addEventListener('scroll', function () {
 	let scrollTop = window.scrollY
@@ -261,8 +280,6 @@ document.addEventListener('scroll', function () {
 	}
 })
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
 	const tabs = document.querySelectorAll('.process__tab') // Всі таби
 	const tabContents = document.querySelectorAll('.process__content') // Всі контенти
@@ -294,7 +311,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 })
 
-
 document.addEventListener('scroll', function () {
 	const section = document.querySelector('.process')
 	const sectionTop = section.getBoundingClientRect().top
@@ -304,8 +320,6 @@ document.addEventListener('scroll', function () {
 		section.classList.add('show')
 	}
 })
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
 	const button = document.querySelector('.process__btn')
@@ -326,9 +340,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	observer.observe(button)
 })
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
 	const items = document.querySelectorAll('.about__item')
@@ -390,45 +401,27 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 })
 
+document.addEventListener('DOMContentLoaded', function () {
+	const blockquote = document.querySelector('.safety__blockquote')
 
-document.addEventListener("DOMContentLoaded", function () {
-  const blockquote = document.querySelector(".safety__blockquote");
+	const observer = new IntersectionObserver(
+		entries => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					blockquote.classList.add('active')
+				}
+			})
+		},
+		{ threshold: 0.3 }
+	)
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          blockquote.classList.add("active");
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  observer.observe(blockquote);
-});
-
+	observer.observe(blockquote)
+})
 
 $('.slick-slider').on('afterChange', function (event, slick, currentSlide) {
 	$('.slick-slide').attr('inert', '')
 	$('.slick-slide').eq(currentSlide).removeAttr('inert')
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
@@ -536,17 +529,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 })
 
-
-
-
-
-
 ////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 $(document).ready(function () {
 	$('.slider').slick({
