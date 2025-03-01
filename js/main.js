@@ -1,234 +1,417 @@
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
-
-if (ScrollTrigger.isTouch !== 1) {
-	ScrollSmoother.create({
-		wrapper: '.wrapper',
-		content: '.content',
-		smooth: 1.2,
-		effects: true,
+document.addEventListener('DOMContentLoaded', function () {
+	SmoothScroll({
+		animationTime: 800,
+		stepSize: 75,
+		accelerationDelta: 30,
+		accelerationMax: 2,
+		keyboardSupport: true,
+		arrowScroll: 50,
+		pulseAlgorithm: true,
+		pulseScale: 4,
+		pulseNormalize: 1,
+		touchpadSupport: true,
 	})
-
-	gsap.registerPlugin(ScrollTrigger)
-
-	// Анімація для тексту (з’являється першим)
-	gsap.fromTo(
-		'.decision__text',
-		{ x: -500 },
-		{
-			opacity: 1,
-			x: 0,
-			duration: 3.5,
-			ease: 'power2.out',
-			scrollTrigger: {
-				trigger: '.decision__text',
-				start: 'top 98%',
-				end: 'top 85%',
-				scrub: true,
-			},
-		}
-	)
-
-	// Анімація для заголовка (з’являється після тексту)
-	gsap.fromTo(
-		'.decision__title',
-		{ x: -500 },
-		{
-			opacity: 1,
-			x: 0,
-			duration: 5.5,
-			ease: 'power2.out',
-			scrollTrigger: {
-				trigger: '.decision__content',
-				start: 'top 85%',
-				end: 'top 15%',
-				scrub: true,
-			},
-		}
-	)
-
-	// Анімація для картинки (виїжджає справа)
-	gsap.fromTo(
-		'.decision__img',
-		{ x: 70, clipPath: 'inset(0% 0% 0% 100%)' },
-		{
-			x: 0,
-			clipPath: 'inset(0% 0% 0% 0%)',
-			duration: 1.8,
-			ease: 'power2.out',
-			scrollTrigger: {
-				trigger: '.decision__img',
-				start: 'top 55%',
-				end: 'top 5%',
-				scrub: true,
-			},
-		}
-	)
-
-	gsap.fromTo(
-		'.decision-border',
-		{ scaleX: 0, transformOrigin: 'left center' }, // Початковий стан (невидимий)
-		{
-			scaleX: 1, // Повне відображення
-			scrollTrigger: {
-				trigger: '.decision-border',
-				start: 'top 80%', // Коли з'являється у вікні
-				end: 'top 30%', // Коли завершує ефект
-				scrub: true,
-			},
-		}
-	)
-	// Заголовок виїжджає зліва
-	gsap.fromTo(
-		'.history__title',
-		{ y: '100%' },
-		{
-			opacity: 1,
-			y: '0%',
-			duration: 1.2,
-			ease: 'power3.out',
-			scrollTrigger: {
-				trigger: '.history__title',
-				start: 'top 80%',
-				end: 'top 50%',
-				scrub: true,
-			},
-		}
-	)
-
-	// Тексти з'являються поступово
-	gsap.utils.toArray('.history__info-text').forEach((text, index) => {
-		gsap.fromTo(
-			text,
-			{ opacity: 0, y: 50 },
-			{
-				opacity: 1,
-				y: 0,
-				duration: 1.2,
-				ease: 'power3.out',
-				scrollTrigger: {
-					trigger: text,
-					start: 'top 85%',
-					end: 'top 40%',
-					scrub: true,
-				},
-			}
-		)
-	})
-
-let tl = gsap.timeline({
-	scrollTrigger: {
-		trigger: '.nowadays__top',
-		start: 'top 90%',
-		end: 'top 50%',
-		scrub: 1,
-	},
 })
 
-tl.to('.nowadays__title', {
-	x: 0,
-	opacity: 1,
-	duration: 1.5,
-	ease: 'power4.out',
-}).to(
-	'.nowadays__text-top',
-	{
-		y: 0,
-		opacity: 1,
-		duration: 1.5,
-		ease: 'power4.out',
-	},
-	'-=1'
-) // Починає анімацію трохи швидше
 
-// Окремий тригер для .nowadays__text-bottom
-gsap.fromTo(
-	'.nowadays__text-bottom',
-	{ y: 50, opacity: 0 }, // Початковий стан: зміщене вниз і прозоре
-	{
-		y: 0,
-		opacity: 1,
-		duration: 1.5,
-		ease: 'power4.out',
-		scrollTrigger: {
-			trigger: '.nowadays__text-bottom',
-			start: 'top 90%',
-			end: 'top 50%',
-			scrub: 1,
-		},
+document.addEventListener('DOMContentLoaded', function () {
+	function onScroll() {
+		let title = document.querySelector('.decision__title')
+		let text = document.querySelector('.decision__text')
+		let image = document.querySelector('.decision__img')
+		let border = document.querySelector('.decision-border')
+
+		let titleRect = title.getBoundingClientRect()
+		let textRect = text.getBoundingClientRect()
+		let imgRect = image.getBoundingClientRect()
+		let borderRect = border.getBoundingClientRect()
+
+		let windowHeight = window.innerHeight
+
+		let titleTrigger = windowHeight * 0.75 // Заголовок з'являється при 75%
+		let textTrigger = windowHeight * 0.9 // Текст з'являється при 50%
+		let imgTrigger = windowHeight * 0.75 // Картинка з'являється при 75%
+		let borderTrigger = windowHeight * 0.90 // Лінія з'являється при 80%
+
+		if (titleRect.top < titleTrigger) {
+			title.classList.add('visible-title')
+		}
+		if (textRect.top < textTrigger) {
+			text.classList.add('visible-text')
+		}
+		if (imgRect.top < imgTrigger) {
+			image.classList.add('visible-img')
+		}
+		if (borderRect.top < borderTrigger) {
+			border.classList.add('visible-border')
+		}
 	}
-)
 
-	// Плавна анімація картинки (виїжджає зверху вниз)
-	let img = document.querySelector('.nowadays__img img')
+	window.addEventListener('scroll', onScroll)
+	onScroll() // Викликаємо одразу для елементів, які вже у видимій зоні
+})
 
-	gsap.to(img, {
-		opacity: 1,
-		clipPath: 'circle(100% at center)',
-		scrollTrigger: {
-			trigger: img,
-			start: 'top 80%',
-			end: 'top 50%',
-			scrub: true,
-		},
-	})
+
+
+document.addEventListener('DOMContentLoaded', function () {
+	function onScroll() {
+		let title = document.querySelector('.history__title')
+		let leftText = document.querySelector('.history__info-text--left')
+		let rightText = document.querySelector('.history__info-text--right')
+		let centerText = document.querySelector('.history__info-text--center')
+
+		let titleRect = title.getBoundingClientRect()
+		let leftRect = leftText.getBoundingClientRect()
+		let rightRect = rightText.getBoundingClientRect()
+		let centerRect = centerText.getBoundingClientRect()
+
+		let windowHeight = window.innerHeight
+
+		let triggerTitle = windowHeight * 0.92 // Тайтл при 75% екрану
+		let triggerText = windowHeight * 0.85 // Тексти при 60%
+
+		if (titleRect.top < triggerTitle) {
+			title.classList.add('visible-title')
+		}
+		if (leftRect.top < triggerText) {
+			leftText.classList.add('visible-left')
+		}
+		if (rightRect.top < triggerText) {
+			rightText.classList.add('visible-right')
+		}
+		if (centerRect.top < triggerText) {
+			centerText.classList.add('visible-center')
+		}
+	}
+
+	window.addEventListener('scroll', onScroll)
+	onScroll() // Запускаємо одразу для елементів у видимій зоні
+})
+
+
+document.addEventListener('DOMContentLoaded', function () {
+	function onScroll() {
+		const title = document.querySelector('.nowadays__title')
+		const texts = document.querySelectorAll('.nowadays__text')
+		const img = document.querySelector('.nowadays__img')
+
+		const titleRect = title.getBoundingClientRect()
+		const windowHeight = window.innerHeight
+
+		// Тригери для тайтлу і текстів
+		const triggerTitle = windowHeight * 0.92
+		const triggerText = windowHeight * 0.90
+				const triggerImg = windowHeight * 0.8
+
+const imgRect = img.getBoundingClientRect()
+if (imgRect.top < triggerImg) {
+	img.classList.add('visible-now-img')
 }
+		if (titleRect.top < triggerTitle) {
+			title.classList.add('visible-title')
+		}
 
-
-gsap.utils.toArray('.history__info-text').forEach(text => {
-	text.style.overflow = 'hidden' // Ховаємо вихідний текст для ефекту "з-за стіни"
-
-	if (text.classList.contains('history__info-text--left')) {
-		// Лівий текст випливає зліва
-		gsap.fromTo(
-			text,
-			{ x: '-100%' },
-			{
-				x: '0%',
-				duration: 1.5,
-				ease: 'power4.out',
-				scrollTrigger: {
-					trigger: text,
-					start: 'top 85%',
-					end: 'top 40%',
-					scrub: true,
-				},
+		texts.forEach(text => {
+			const textRect = text.getBoundingClientRect()
+			if (textRect.top < triggerText) {
+				text.classList.add('visible-text')
 			}
-		)
-	} else if (text.classList.contains('history__info-text--right')) {
-		// Правий текст випливає справа
-		gsap.fromTo(
-			text,
-			{ x: '100%' },
-			{
-				x: '0%',
-				duration: 1.5,
-				ease: 'power4.out',
-				scrollTrigger: {
-					trigger: text,
-					start: 'top 85%',
-					end: 'top 40%',
-					scrub: true,
-				},
-			}
-		)
-	} else {
-		// Центральний текст піднімається знизу
-		gsap.fromTo(
-			text,
-			{ y: '100%' },
-			{
-				y: '0%',
-				duration: 1.5,
-				ease: 'power4.out',
-				scrollTrigger: {
-					trigger: text,
-					start: 'top 85%',
-					end: 'top 40%',
-					scrub: true,
-				},
-			}
-		)
+		})
 	}
+
+	window.addEventListener('scroll', onScroll)
+	onScroll() // Запускаємо для елементів, які вже у полі зору
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+	let hasAnimated = false
+
+	function animateNumber(element, end, duration) {
+		let startTime = null
+
+		function updateNumber(currentTime) {
+			if (!startTime) startTime = currentTime
+			const progress = Math.min((currentTime - startTime) / duration, 1)
+			const value = Math.floor(progress * end)
+			element.textContent = value + '%'
+			if (progress < 1) {
+				requestAnimationFrame(updateNumber)
+			}
+		}
+
+		requestAnimationFrame(updateNumber)
+	}
+
+	function checkScroll() {
+		const section = document.querySelector('.statistics')
+		const nums = document.querySelectorAll('.statistics__num')
+		const tildes = document.querySelectorAll('.statistics__tilde')
+		const targets = [80, 100, 70] // Цільові значення
+		const sectionTop = section.getBoundingClientRect().top
+		const windowHeight = window.innerHeight
+
+		if (sectionTop < windowHeight * 0.9 && !hasAnimated) {
+			hasAnimated = true
+
+			// Запуск анімації чисел
+			nums.forEach((num, index) => {
+				animateNumber(num, targets[index], 1500) // Тривалість 1.5 сек
+			})
+
+			// Поворот тильди — одразу при старті анімації чисел
+			tildes.forEach(tilde => {
+				tilde.classList.add('rotate-tilde')
+			})
+		}
+	}
+
+	window.addEventListener('scroll', checkScroll)
+	checkScroll() // Перевірка при завантаженні сторінки
+})
+
+
+document.addEventListener('DOMContentLoaded', function () {
+	let hasAnimated = false
+
+	function checkScroll() {
+		const section = document.querySelector('.statistics__descr')
+		const sectionTop = section.getBoundingClientRect().top
+		const windowHeight = window.innerHeight
+
+		if (sectionTop < windowHeight * 1 && !hasAnimated) {
+			hasAnimated = true
+			section.classList.add('visible') // Додаємо клас для запуску анімації
+		}
+	}
+
+	window.addEventListener('scroll', checkScroll)
+	checkScroll() // Перевірка при завантаженні сторінки
+})
+
+
+document.addEventListener('scroll', function () {
+	let scrollTop = window.scrollY
+	let parallaxSpeed = 0.5 // Чим менше значення, тим повільніше рухається фон
+
+	// Паралакс для header-bg
+	document.querySelector('.header-bg').style.transform = `translateY(${
+		scrollTop * parallaxSpeed
+	}px)`
+})
+
+
+document.addEventListener('scroll', function () {
+	let scrollTop = window.scrollY
+	const parallaxSpeedY = 0.3 // Швидкість паралаксу по осі Y
+
+	// Перевірка, чи блок .about знаходиться в полі зору
+	const aboutSection = document.querySelector('.about')
+	const aboutBg = document.querySelector('.about-bg')
+
+	if (!aboutSection || !aboutBg) return
+
+	const aboutRect = aboutSection.getBoundingClientRect()
+	const windowHeight = window.innerHeight
+
+	// Якщо блок .about в полі зору
+	if (aboutRect.top < windowHeight * 1) {
+		// Починається анімація, коли блок на 90% в полі зору
+		gsap.to(aboutBg, {
+			y: scrollTop * parallaxSpeedY, // Тільки по осі Y
+			ease: 'power2.out', // Плавна анімація
+			duration: 0.3, // Тривалість анімації
+		})
+	} else {
+		// Якщо блок не в полі зору, скидаємо трансформацію
+		gsap.to(aboutBg, {
+			y: 0, // Скидаємо зміщення
+			ease: 'power2.out',
+			duration: 0.3,
+		})
+	}
+})
+document.addEventListener('scroll', function () {
+	let scrollTop = window.scrollY
+	const parallaxSpeedY = 0.3 // Швидкість паралаксу по осі Y
+
+	// Перевірка, чи блок .about знаходиться в полі зору
+	const nowadaysSection = document.querySelector('.nowadays')
+	const nowadaysBg = document.querySelector('.nowadays-bg')
+
+	if (!nowadaysSection || !nowadaysBg) return
+
+	const nowadaysRect = nowadaysSection.getBoundingClientRect()
+	const windowHeight = window.innerHeight
+
+	// Якщо блок .nowadays в полі зору
+	if (nowadaysRect.top < windowHeight * 1) {
+		// Починається анімація, коли блок на 90% в полі зору
+		gsap.to(nowadaysBg, {
+			y: scrollTop * parallaxSpeedY, // Тільки по осі Y
+			ease: 'power2.out', // Плавна анімація
+			duration: 0.3, // Тривалість анімації
+		})
+	} else {
+		// Якщо блок не в полі зору, скидаємо трансформацію
+		gsap.to(nowadaysBg, {
+			y: 0, // Скидаємо зміщення
+			ease: 'power2.out',
+			duration: 0.3,
+		})
+	}
+})
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+	const tabs = document.querySelectorAll('.process__tab') // Всі таби
+	const tabContents = document.querySelectorAll('.process__content') // Всі контенти
+
+	const observer = new IntersectionObserver(
+		(entries, observer) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					// Додаємо клас visible для таба
+					entry.target.classList.add('visible')
+
+					// Для контенту з затримкою
+					const content = entry.target.querySelector('.process__content')
+					if (content) {
+						content.classList.add('visible')
+					}
+
+					observer.unobserve(entry.target) // Відключаємо подальше спостереження
+				}
+			})
+		},
+		{
+			threshold: 0.5, // Анімація запускається, коли 50% елемента видно
+		}
+	)
+
+	tabs.forEach(tab => {
+		observer.observe(tab) // Спостерігаємо за кожним табом
+	})
+})
+
+
+document.addEventListener('scroll', function () {
+	const section = document.querySelector('.process')
+	const sectionTop = section.getBoundingClientRect().top
+	const windowHeight = window.innerHeight
+
+	if (sectionTop < windowHeight * 0.9) {
+		section.classList.add('show')
+	}
+})
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+	const button = document.querySelector('.process__btn')
+
+	if (!button) return
+
+	const observer = new IntersectionObserver(
+		entries => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					button.classList.add('active') // Додаємо клас для запуску анімації
+					observer.disconnect() // Зупиняємо спостереження після запуску
+				}
+			})
+		},
+		{ threshold: 0.5 } // Запуск анімації, коли кнопка стає видимою на 50%
+	)
+
+	observer.observe(button)
+})
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+	const items = document.querySelectorAll('.about__item')
+	const title = document.querySelector('.about__title')
+
+	if (title) {
+		const titleObserver = new IntersectionObserver(
+			entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active')
+					}
+				})
+			},
+			{ threshold: 0.5 }
+		)
+
+		titleObserver.observe(title)
+	}
+
+	if (items.length) {
+		const observer = new IntersectionObserver(
+			entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active')
+					}
+				})
+			},
+			{ threshold: 0.3 }
+		)
+
+		items.forEach(item => observer.observe(item))
+	}
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+	const footer = document.querySelector('.footer')
+	const title = document.querySelector('.footer__title')
+	const texts = document.querySelectorAll('.footer__info-text')
+	const form = document.querySelector('.footer__form')
+
+	if (footer) {
+		const observer = new IntersectionObserver(
+			entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						footer.classList.add('active')
+						title.classList.add('active')
+						texts.forEach(text => text.classList.add('active'))
+						form.classList.add('active')
+					}
+				})
+			},
+			{ threshold: 0.3 }
+		)
+
+		observer.observe(footer)
+	}
+})
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const blockquote = document.querySelector(".safety__blockquote");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          blockquote.classList.add("active");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(blockquote);
+});
+
+
+$('.slick-slider').on('afterChange', function (event, slick, currentSlide) {
+	$('.slick-slide').attr('inert', '')
+	$('.slick-slide').eq(currentSlide).removeAttr('inert')
 })
 
 
@@ -238,9 +421,16 @@ gsap.utils.toArray('.history__info-text').forEach(text => {
 
 
 
-////////////////////////////////////////////////////////////////
 
 
+
+
+
+
+
+
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
 document.addEventListener('DOMContentLoaded', function () {
 	// Масив цитат та авторів
@@ -345,15 +535,18 @@ document.addEventListener('DOMContentLoaded', function () {
 		stagger: 0.1, // Плавна поява кожної букви
 	})
 })
-document.addEventListener('DOMContentLoaded', function () {
-	gsap.to('.header__title span', {
-		opacity: 1,
-		y: 0,
-		duration: 0.8,
-		ease: 'power2.out',
-		stagger: 0.1, // Плавна поява кожної букви
-	})
-})
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 $(document).ready(function () {
 	$('.slider').slick({

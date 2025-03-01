@@ -3,25 +3,17 @@ html {
 	box-sizing: border-box;
 }
 
-:root{
-	--index: calc(1vw + 1vh);
-}
-
 html {
 	scroll-behavior: smooth;
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 	color: #fff;
 	font-size: 20px;
 	background: linear-gradient(180deg, #f8f8f8 0%, #f2f1ef 100%);
 	overflow-x: hidden;
-	height: auto;
-}
-html, body {
-  height: auto;
 }
 
 .container {
@@ -31,43 +23,27 @@ html, body {
 }
 
 .header {
-	overflow: hidden;
 	background: linear-gradient(
 		180deg,
 		rgba(0, 0, 0, 0.6) 0%,
 		rgba(0, 0, 0, 0.7) 100%
 	);
 }
+
 .header__wrapper {
 	position: relative;
 	overflow: hidden;
-
-	/* background-image: url('../images/header-bg.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top center; */
 }
-
-.content, .decision__img, .decision__content > *{
-  will-change: transform;
-}
-
-.wrapper{
-	overflow: hidden;
-}
-
-
-
 
 .header-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: -1;
+	display: block;
 }
 
 .header__inner {
@@ -85,7 +61,7 @@ html, body {
 }
 .header__menu-link {
 	color: #fff;
-	font-family: 'Noto Sans';
+	font-family: 'Montserrat';
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 120%;
@@ -96,48 +72,66 @@ html, body {
 }
 
 .header__title {
-  font-family: 'Raleway', sans-serif;
-  font-size: 200px;
-  font-weight: 500;
-  color: #dcc27c;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 200px;
+	font-weight: 500;
+	color: #dcc27c;
 	text-transform: uppercase;
-  display: flex;
+	display: flex;
 }
 
 .header__title span {
-  opacity: 0;
-  transform: translateY(20px);
-  display: inline-block;
+	opacity: 0;
+	transform: translateY(20px);
+	display: inline-block;
 }
 
 .space {
-  margin-right: 20px;
+	margin-right: 20px;
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
-.header__title span:nth-child(1) { animation-delay: 0s; }
-.header__title span:nth-child(2) { animation-delay: 0.1s; }
-.header__title span:nth-child(3) { animation-delay: 0.2s; }
-.header__title span:nth-child(4) { animation-delay: 0.3s; }
-.header__title span:nth-child(5) { animation-delay: 0.4s; }
-.header__title span:nth-child(6) { animation-delay: 0.5s; }
-.header__title span:nth-child(7) { animation-delay: 0.6s; }
-.header__title span:nth-child(8) { animation-delay: 0.7s; }
-.header__title span:nth-child(9) { animation-delay: 0.8s; }
+.header__title span:nth-child(1) {
+	animation-delay: 0s;
+}
+.header__title span:nth-child(2) {
+	animation-delay: 0.1s;
+}
+.header__title span:nth-child(3) {
+	animation-delay: 0.2s;
+}
+.header__title span:nth-child(4) {
+	animation-delay: 0.3s;
+}
+.header__title span:nth-child(5) {
+	animation-delay: 0.4s;
+}
+.header__title span:nth-child(6) {
+	animation-delay: 0.5s;
+}
+.header__title span:nth-child(7) {
+	animation-delay: 0.6s;
+}
+.header__title span:nth-child(8) {
+	animation-delay: 0.7s;
+}
+.header__title span:nth-child(9) {
+	animation-delay: 0.8s;
+}
 
 .header__blockquote {
 	color: #fff;
-	font-family: 'Noto Sans';
+	font-family: 'Montserrat';
 	font-size: 32px;
 	font-style: italic;
 	font-weight: 400;
@@ -145,21 +139,21 @@ html, body {
 	margin-left: 155px;
 	opacity: 0;
 	text-indent: 165px;
-  transition: all .3s;
-  display: inline-block;
+	transition: all 0.3s;
+	display: inline-block;
 }
 
 .header__authors p {
-  color: rgba(255, 255, 255, 0.5); /* Всі автори напівпрозорі */
-  transform: translateX(-100%); /* Початкове положення (зліва) */
-  opacity: 0;
-  transition: color 1s ease-in-out, transform 1s ease-in-out;
+	color: rgba(255, 255, 255, 0.5); /* Всі автори напівпрозорі */
+	transform: translateX(-100%); /* Початкове положення (зліва) */
+	opacity: 0;
+	transition: color 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .header__authors p.active {
-  color: white; /* Активний автор стає білим */
-  transform: translateX(0); /* Виїжджає в центр */
-  opacity: 1;
+	color: white; /* Активний автор стає білим */
+	transform: translateX(0); /* Виїжджає в центр */
+	opacity: 1;
 }
 
 .header__authors p + p {
@@ -168,19 +162,20 @@ html, body {
 
 .header__author {
 	color: #646161;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 23px;
+	line-height: 22px;
 }
 
-.decision > .container{
-	padding-right: 0;
+.decision {
+	overflow: hidden;
 }
 
-.decision__img{
+.decision__img {
 	border-radius: 20px 0 0 20px;
+	margin-right: -34px;
 }
 
 .decision__inner {
@@ -198,16 +193,80 @@ html, body {
 	padding-inline-start: 125px;
 }
 
-.decision-border{
-	background: #dcc27c !important;
-	margin-right: 34px;
-  height: 1px; 
-  transform-origin: left center;
+/* Початковий стан: лінія має ширину 0% */
+.decision-border {
+	width: 0;
+	height: 2px;
+	background: #dcc27c;
+	transition: width 1.5s ease-out;
+	display: block;
+	padding-right: 0;
+}
+
+/* Коли лінія в полі зору */
+.visible-border {
+	width: 100%;
+}
+
+/* Коли лінія в полі зору */
+.visible-border {
+	width: 100%;
+}
+
+.decision__title {
+	opacity: 0;
+	transform: translateX(-500px);
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Текст */
+.decision__text {
+	opacity: 0;
+	transform: translateX(-500px);
+	transition: opacity 1s ease-out, transform 1s ease-out; /* Затримка для плавності */
+}
+
+.decision__img {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	height: auto;
+	opacity: 1;
+	clip-path: inset(0 0 0 100%);
+	transition: opacity 1.5s ease-out, clip-path 1.5s ease-out;
+}
+
+.image-inner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-size: cover;
+	background-position: center;
+	transform: translate(-50%, -50%);
+	transition: transform 0.1s ease-out;
+	will-change: transform;
+}
+
+.visible-img {
+	opacity: 1;
+	clip-path: inset(0 0 0 0);
+}
+
+/* Коли заголовок в полі зору */
+.visible-title {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+/* Коли текст в полі зору */
+.visible-text {
+	opacity: 1;
+	transform: translateX(0);
 }
 
 .title {
 	color: #dcc27c;
-	font-family: 'Raleway';
+	font-family: 'Montserrat';
 	font-size: 35px;
 	font-weight: 600;
 	text-transform: uppercase;
@@ -216,10 +275,10 @@ html, body {
 
 .page-text {
 	color: #000;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
 	font-style: normal;
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 130%; /* 26px */
 	text-indent: 250px;
 	max-inline-size: 700px;
@@ -227,10 +286,10 @@ html, body {
 
 .page-text span {
 	color: #000;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
 	font-style: italic;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 130%;
 }
 
@@ -240,11 +299,11 @@ html, body {
 .history__title {
 	margin-bottom: 100px;
 	margin-left: 150px;
-	opacity: 0;
+	transform: translateX(-500px);
 }
 
 .history__info-text {
-	text-indent: 150px;
+	text-indent: 140px;
 	opacity: 0;
 }
 
@@ -255,23 +314,82 @@ html, body {
 	gap: 100px;
 }
 
+/* Початковий стан: приховуємо всі елементи */
+.history__title,
+.history__info-text {
+	opacity: 0;
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Лівий текст */
+.history__info-text--left {
+	transform: translateX(-500px);
+}
+
+/* Правий текст */
+.history__info-text--right {
+	transform: translateX(500px);
+}
+
+/* Коли елемент у полі зору */
+.visible-title,
+.visible-left,
+.visible-right {
+	opacity: 1;
+	transform: translateY(0);
+}
+/* Початковий стан: текст невидимий і обрізаний знизу */
+.history__info-text--center {
+	opacity: 0;
+	transform: translateY(100px); /* Зміщуємо вниз */
+	max-height: 0; /* Робимо блок схованим */
+	overflow: hidden; /* Ховаємо вихідний текст */
+	transition: max-height 1s ease-out, opacity 1s ease-out,
+		transform 0.5s ease-out;
+}
+
+/* Коли елемент у полі зору */
+.visible-center {
+	opacity: 1;
+	transform: translateY(0);
+	max-height: 500px; /* Відкриваємо блок (підбираємо значення під контент) */
+}
+
 .slider {
 }
 
-.nowadays__content {
+.nowadays,
+.challenge{
 	position: relative;
+	min-height: 100vh;
 }
 
+.nowadays__wrapper {
+	position: relative;
+	overflow: hidden;
+	width: 100%; /* Для забезпечення розтягування на всю ширину */
+}
+
+.nowadays-bg {
+	position: absolute; /* Залишаємо фон на місці при скролі */
+	top: -100%;
+	left: 0;
+	width: 100%;
+	height: 125%;
+	object-fit: cover; /* Для правильного масштабування фону */
+	z-index: -1; /* Фон на задньому плані */
+	transition: opacity 0.3s ease-out;
+}
 .next-btn {
+	margin-top: 20px;
+	position: relative;
 	color: #b3b3b3;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 300;
 	line-height: 130%; /* 20.8px */
-	display: block;
 	padding-right: 25px;
-	position: relative;
 	display: block;
 }
 
@@ -302,30 +420,21 @@ html, body {
 }
 
 .prev-btn {
+	margin-top: 30px;
 	position: relative;
 	padding-left: 25px;
 	color: #4c4c4c;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 300;
 	line-height: 130%; /* 20.8px */
 }
 
-.slide-btn {
-	margin-top: 15px;
-}
-
-.nowadays__wrapper {
-	background-image: url('../images/nowadays-bg.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: top center;
-}
-
 .nowadays {
 	background: linear-gradient(180deg, rgba(78, 78, 78, 0.6) 0%, #353535 100%);
 }
+
 .nowadays p,
 .nowadays span {
 	color: #fff;
@@ -337,41 +446,89 @@ html, body {
 	gap: 330px;
 	margin-bottom: 50px;
 }
+
 .nowadays__top {
-    overflow: hidden; /* Ховає вихідний текст */
-    position: relative;
+	overflow: hidden; /* Ховає вихідний текст */
+	position: relative;
 }
 
-.nowadays__text {
-    transform: translateY(100%); /* Ховаємо за нижнім краєм */
-    opacity: 0;
-}
-
-.nowadays__title {
-    transform: translateX(-100%); /* Ховаємо за нижнім краєм */
-}
-
-
-.nowadays__img {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Початковий стан: маленьке коло */
+/* Початковий стан картинки — маленьке коло */
 .nowadays__img img {
-    opacity: 0;
-    clip-path: circle(0% at center);
-    transition: clip-path 1.5s ease-out, opacity 1s ease-out;
-		border-radius: 20px;
+	border-radius: 15px;
+}
+.nowadays__img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: auto;
+	max-width: 500px; /* або розмір, який тобі потрібен */
+	margin: 0 auto; /* Центрування */
+	border-radius: 50%; /* Початковий стан — круг */
+	clip-path: circle(0%); /* Обрізка до нуля */
+	transition: clip-path 1s ease-out, border-radius 1s ease-out;
+	border-radius: 15px;
 }
 
-.nowadays__wrapper.show .nowadays__img img {
-    opacity: 1;
-    clip-path: circle(100% at center);
+/* Анімація появи картинки */
+.visible-now-img {
+	clip-path: circle(110%);
+	border-radius: 0;
 }
 
+/* Заголовок — анімація згори */
+.nowadays__title {
+	opacity: 0;
+	transform: translateX(-100px); /* Зсув вгору */
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
 
+/* Загальні стилі для тексту — спочатку приховані */
+.nowadays__text {
+	opacity: 0;
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Верхній текст — знизу вгору */
+.nowadays__text--top {
+	transform: translateY(100px); /* Зсув знизу */
+	opacity: 0;
+	transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* Лівий текст — зліва направо */
+.nowadays__text--left {
+	transform: translateX(-1000px); /* Зсув зліва */
+	transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* Правий текст — справа наліво */
+.nowadays__text--right {
+	transform: translateX(1000px); /* Зсув справа */
+	transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+/* Видимий стан — з'являється і "виїжджає" */
+.visible-title {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.visible-text {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.visible-left {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.visible-right {
+	opacity: 1;
+	transform: translateX(0);
+}
 
 .nowadays__content {
 	padding: 150px 0 175px;
@@ -382,7 +539,7 @@ html, body {
 }
 
 .nowadays__info {
-	margin-top: 50px;
+	margin-top: 60px;
 	display: flex;
 	align-items: start;
 	justify-content: space-between;
@@ -415,9 +572,8 @@ html, body {
 	gap: 175px;
 }
 
-.challenge__img{
-		border-radius: 20px;
-
+.challenge__img {
+	border-radius: 20px;
 }
 
 .challenge__info > .challenge__text {
@@ -426,14 +582,6 @@ html, body {
 
 .challenge__info p:nth-child(2) {
 	text-indent: 0;
-}
-
-html {
-	scroll-behavior: smooth; /* Плавний скрол */
-}
-
-.process__inner {
-	gap: 30px;
 }
 
 .statistics {
@@ -452,31 +600,71 @@ html {
 }
 .statistics__num {
 	color: #000;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 40px;
 	font-weight: 300;
 	line-height: 140%; /* 56px */
-	margin-bottom: 15px;
 }
 .statistics__text {
 	color: #000;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
 	font-weight: 300;
 	line-height: 130%; /* 26px */
 }
 .statistics__descr {
 	text-align: center;
-	width: 375px;
+	width: 440px;
 	color: #dcc27c;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 36px;
 	font-style: italic;
 	font-weight: 400;
-	line-height: 130%; /* 46.8px */
+	line-height: 130%;
 	padding-bottom: 15px;
-	border-bottom: 1px solid #000;
 	margin: 0 auto;
+	position: relative;
+	overflow: hidden; /* Приховуємо бордер до анімації */
+}
+
+/* Псевдоелемент для бордеру */
+.statistics__descr::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0; /* Початковий розмір 0 */
+	height: 1px;
+	background-color: #000;
+	transform: translateX(-50%); /* Центруємо бордер */
+	transition: width 1s ease; /* Тільки ширина анімується */
+}
+
+/* Коли додається клас visible */
+.statistics__descr.visible::before {
+	width: 100%; /* Ширина на 100% */
+}
+
+.statistics__item-info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+}
+
+.statistics__tilde {
+	display: inline-block;
+	color: #000;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 40px;
+	font-weight: 300;
+	line-height: 140%; /* 56px */
+	transition: transform 1s;
+	margin-right: 5px;
+}
+
+.rotate-tilde {
+	transform: rotate(720deg);
 }
 
 .process {
@@ -485,6 +673,7 @@ html {
 }
 
 .process__inner {
+	gap: 30px;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
@@ -502,7 +691,7 @@ html {
 
 .process__text {
 	color: #000;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 300;
@@ -512,24 +701,42 @@ html {
 }
 
 .process__btn {
+	position: relative;
+	display: inline-block;
 	color: #161515;
 	text-align: center;
-	font-family: 'Noto Sans';
+	font-family: 'Montserrat';
 	font-size: 20px;
-	font-style: normal;
 	font-weight: 400;
-	line-height: 120%; /* 24px */
-	border: 1px solid #000;
+	line-height: 120%;
 	padding: 16px 32px;
-	transition: all 0.3s;
+	background: transparent;
+	border-radius: 4px;
+	transition: background 0.3s;
+	overflow: hidden;
+}
+
+/* Приховуємо SVG, доки не буде запущена анімація */
+.btn-border {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	stroke-dasharray: 600; /* Довжина контуру */
+	stroke-dashoffset: 500; /* Початковий стан - невидимий бордер */
+	transition: stroke-dashoffset 2s ease-in-out;
+}
+
+/* Додаємо клас "active" при скролі - бордер починає малюватися */
+.process__btn.active .btn-border {
+	stroke-dashoffset: 0;
 }
 
 .process__btn:hover {
-	border: 1px solid #000;
 	background: #ececec;
 }
 .process__btn:active {
-	border: 1px solid #000;
 	background: #ddd;
 }
 
@@ -541,9 +748,45 @@ html {
 .process__tab {
 	padding: 20px 0;
 	border-bottom: 1px solid #b4abab;
-	cursor: po'Roboto', sans-serif;
+	cursor: po 'Montserrat', sans-serif;
 	position: relative;
+	cursor: s-resize;
 	width: 100%;
+	opacity: 0;
+}
+.process__tab {
+	opacity: 0; /* Спочатку приховані */
+	transition: opacity 0.8s ease-out, transform 0.8s ease-out,
+		filter 0.8s ease-out;
+}
+
+/* Додаємо клас active при скролі */
+.process__tab.active {
+	opacity: 1;
+}
+
+/* Затримка появи для кожного пункту */
+.process__tab:nth-child(1) {
+	transition-delay: 0.1s;
+}
+.process__tab:nth-child(2) {
+	transition-delay: 0.2s;
+}
+.process__tab:nth-child(3) {
+	transition-delay: 0.3s;
+}
+.process__tab:nth-child(4) {
+	transition-delay: 0.4s;
+}
+.process__tab:nth-child(5) {
+	transition-delay: 0.5s;
+}
+.process__tab:nth-child(6) {
+	transition-delay: 0.6s;
+}
+
+.process__tab.visible {
+	opacity: 1;
 }
 
 .process__tab:first-child {
@@ -553,7 +796,7 @@ html {
 .process__tab-text {
 	position: relative;
 	color: #000;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 300;
@@ -596,20 +839,85 @@ html {
 	transform: translateY(-50%) rotate(-90deg);
 }
 
+/* Стилі для плавної появи */
+.process__title,
+.process__text,
+.process__btn-wrapper {
+	opacity: 0;
+	transform: translateX(
+		-500px
+	); /* Зміщення тайтлу зліва, а тексту та кнопки знизу */
+	transition: all 0.8s ease; /* Плавна анімація */
+}
+
+.process__title {
+	transition-delay: 0.3s; /* Тайтл з'являється трохи пізніше */
+}
+
+.process__text {
+	transition-delay: 0.5s; /* Текст з'являється після тайтлу */
+}
+
+.process__btn-wrapper {
+	transition-delay: 0.7s; /* Кнопка з'являється останньою */
+}
+
+/* Анімація для видимості при прокрутці */
+.process.show .process__title {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.process.show .process__text {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.process.show .process__btn-wrapper {
+	opacity: 1;
+	transform: translateY(0);
+}
+
 .about {
 	padding: 150px 0;
 	background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, #000 100%);
 }
 
-.about__img{
+/* Базові стилі для контейнера */
+.about__img-wrapper {
+	min-width: 605px;
+	height: 400px;
 	border-radius: 15px;
+	position: relative;
+	overflow: hidden;
+}
+
+.about__img {
+	height: 400px;
+	border-radius: 15px;
+	object-fit: cover; /* Зберігає пропорції зображення */
+	margin-bottom: 15px;
+}
+
+/* Ефект зуму при наведенні */
+.about__img-wrapper:hover .about__img {
+	transform: scale(1.1); /* Масштабування картинки на 20% */
 }
 
 .about__wrapper {
-	background-image: url('../images/about-bg.png');
-	background-repeat: no-repeat;
-	background-position: top center;
-	background-size: cover;
+	position: relative;
+	overflow: hidden;
+	width: 100%; /* Для забезпечення розтягування на всю ширину */
+}
+
+.about-bg {
+	position: absolute; /* Залишаємо фон на місці при скролі */
+	top: -100%;
+	left: 0;
+	width: 100%;
+	object-fit: cover; /* Для правильного масштабування фону */
+	z-index: -1; /* Фон на задньому плані */
+	transition: opacity 0.3s ease-out;
 }
 
 .about__title {
@@ -628,7 +936,7 @@ html {
 
 .about__content-title {
 	color: #fff;
-	font-family: 'Noto Sans';
+	font-family: 'Montserrat';
 	font-size: 40px;
 	font-style: normal;
 	font-weight: 400;
@@ -637,7 +945,7 @@ html {
 }
 .about__content-text {
 	color: #fff;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 24px;
 	font-style: normal;
 	font-weight: 300;
@@ -646,36 +954,140 @@ html {
 	border-bottom: 1px solid #fff;
 }
 
+.about__item {
+	display: flex;
+	align-items: center;
+	transition: all 0.5s;
+}
+
+/* Коли активний, плавно проявляється */
+.about__item.active {
+	opacity: 1;
+}
+
+/* Контейнер для зображення */
+.about__img-wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+/* Початковий стан — зображення приховане з боків */
+.about__img {
+	width: 100%;
+	clip-path: inset(0 50% 0 50%);
+	transition: transform 0.5s ease-in-out, clip-path 1s ease-out;
+}
+
+/* Текст справа */
+.about__content {
+	transform: translateX(100%);
+	opacity: 0;
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Коли з’являється */
+.about__item.active .about__img {
+	clip-path: inset(0 0 0 0);
+}
+
+.about__item.active .about__content {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+/* Затримка для плавності */
+.about__item:nth-child(1) {
+	transition-delay: 0.2s;
+}
+.about__item:nth-child(2) {
+	transition-delay: 0.4s;
+}
+.about__item:nth-child(3) {
+	transition-delay: 0.6s;
+}
+.about__item:nth-child(4) {
+	transition-delay: 0.8s;
+}
+.about__title {
+  opacity: 0;
+  transform: translateX(-500px); /* Зміщення вліво */
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Коли активний */
+.about__title.active {
+  opacity: 1;
+  transform: translateX(0);
+}
 .safety {
-	padding: 300px 0;
+	padding: 200px 0;
 }
 
 .safety__blockquote {
 	color: #000;
-	font-family: 'Roboto', sans-serif;
-	font-size: 40px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 38px;
 	font-style: normal;
 	font-weight: 300;
 	line-height: 140%; /* 56px */
-	text-indent: 150px;
-	max-width: 1210px;
+	max-width: 1100px;
+	text-align: center;
 	margin: 0 auto;
 }
 
 .safety__blockquote span {
 	color: #dcc27c;
-	font-family: 'Roboto', sans-serif;
-	font-size: 48px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 38px;
 	font-style: italic;
 	font-weight: 400;
 	line-height: 140%;
 }
 
-footer {
-  position: relative;
-  z-index: 10;
-  margin-bottom: 0; /* Переконайся, що тут немає зайвого простору */
+.safety {
+  perspective: 1000px; /* Додаємо перспективу для 3D ефектів */
+  overflow: hidden;
 }
+
+@keyframes borderMove {
+  0% {
+    border-image-source: linear-gradient(90deg, #000 0%, #dcc27c 100%);
+    border-image-slice: 1;
+  }
+  25% {
+    border-image-source: linear-gradient(180deg, #000 0%, #dcc27c 100%);
+  }
+  50% {
+    border-image-source: linear-gradient(270deg, #000 0%, #dcc27c 100%);
+  }
+  75% {
+    border-image-source: linear-gradient(360deg, #000 0%, #dcc27c 100%);
+  }
+  100% {
+    border-image-source: linear-gradient(90deg, #000 0%, #dcc27c 100%);
+  }
+}
+
+.safety__blockquote {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  padding: 50px;
+  color: #000;
+  text-align: center;
+  transform: translateZ(0);
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(90deg, #000 0%, transparent 100%);
+  animation: borderMove 4s linear infinite;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
 
 .footer__wrapper {
 	background-image: url('../images/footer-bg.png');
@@ -720,7 +1132,7 @@ footer {
 .footer__input {
 	display: block;
 	color: #dedada;
-	font-family: 'Noto Sans';
+	font-family: 'Montserrat';
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 300;
@@ -732,7 +1144,7 @@ footer {
 }
 .footer__input::placeholder {
 	color: #dedada;
-	font-family: 'Noto Sans';
+	font-family: 'Montserrat';
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 300;
@@ -743,7 +1155,7 @@ footer {
 	display: block;
 	color: #fff;
 	text-align: center;
-	font-family: 'Noto Sans';
+	font-family: 'Montserrat';
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
@@ -771,3 +1183,37 @@ footer {
 .flatpickr-calendar:after {
 	display: none;
 }
+
+
+
+
+.footer__title {
+  transform: translateX(-500px); /* Виїжджає зліва */
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.footer__info-text {
+  transform: translateX(-110%);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.footer__form {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Коли футер активний */
+.footer.active,
+.footer__title.active,
+.footer__info-text.active,
+.footer__form.active {
+  opacity: 1;
+  transform: translate(0);
+}
+
+
+/* Затримки для поступової появи */
+.footer__info-text:nth-child(1) { transition-delay: 0.2s; }
+.footer__info-text:nth-child(2) { transition-delay: 0.4s; }
+.footer__form { transition-delay: 0.3s; }
