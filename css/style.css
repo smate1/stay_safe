@@ -62,8 +62,10 @@ body {
 .header__menu-link {
 	color: #fff;
 	font-family: 'Montserrat';
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 400;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
 	line-height: 120%;
 }
 
