@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	function changeQuote() {
 		gsap.to(quoteElement, {
 			opacity: 0,
-			duration: 2.5,
+			duration: 1.5,
 			ease: 'power2.inOut',
 			onComplete: function () {
 				index = (index + 1) % quotes.length
