@@ -810,7 +810,7 @@ body {
 
 .process__accordion {
 	padding-top: 165px;
-	max-width: 915px;
+	width: 915px;
 }
 
 .process__tab {
@@ -860,9 +860,13 @@ body {
 .process__tab:first-child {
 	border-top: 1px solid #b4abab;
 }
-
-.process__tab-text {
+.process__tab {
 	position: relative;
+}
+.process__tab-text br {
+	display: none;
+}
+.process__tab-text {
 	color: #000;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
@@ -878,8 +882,8 @@ body {
 	background-repeat: no-repeat;
 	width: 16px;
 	height: 16px;
-	right: 0;
-	top: 50%;
+	right: 2px;
+	top: 30px;
 	transform: translateY(-50%);
 	transition: transform 0.3s ease;
 }
@@ -1299,6 +1303,9 @@ body {
 }
 
 @media (max-width: 1500px) {
+	.process__inner {
+		gap: 20px;
+	}
 	.challenge__top,
 	.challenge__bottom {
 		gap: 20px;
@@ -1313,8 +1320,28 @@ body {
 		white-space: nowrap;
 	}
 }
-
+@media (max-width: 1350px) {
+	.process__inner {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.process {
+		padding: 100px 0;
+	}
+	.process__title {
+		margin-bottom: 30px;
+	}
+	.process__accordion {
+		padding-top: 0px;
+	}
+}
 @media (max-width: 1280px) {
+	.process {
+		padding: 40px 0;
+	}
+	.process__text {
+		margin-bottom: 20px;
+	}
 	.next-btn {
 		font-size: 12px;
 		padding-right: 20px;
@@ -1373,7 +1400,7 @@ body {
 	}
 }
 @media (max-width: 1000px) {
-	.statistics__items{
+	.statistics__items {
 		margin-bottom: 25px;
 	}
 	.statistics__text br {
@@ -1390,7 +1417,7 @@ body {
 		text-align: center;
 		font-size: 16px;
 	}
-	.statistics__descr{
+	.statistics__descr {
 		font-size: 20px;
 		max-width: 240px;
 	}
@@ -1457,7 +1484,8 @@ body {
 
 	.decision__img {
 		align-self: center;
-		min-width: 100%;
+		width: 100%;
+		margin: 0 auto;
 		border-radius: 20px;
 		transform: none;
 	}
@@ -1497,8 +1525,32 @@ body {
 	}
 }
 @media (max-width: 768px) {
+	.process__text{
+		text-indent: 0;
+	}
+	.process__btn {
+		font-size: 16px;
+	}
+	.process__tab {
+		padding: 15px 0;
+	}
+	.process__tab-text,
+	.process__content {
+		font-size: 14px;
+	}
+	.process__tab-text {
+		text-align: left;
+		text-indent: 0;
+		padding-right: auto;
+	}
+	.process__tab-text br {
+		display: block;
+	}
+	.process__tab-text::after {
+		right: 0;
+	}
 	.challenge__top p:nth-child(2),
-	.challenge__info p:nth-child(2){
+	.challenge__info p:nth-child(2) {
 		display: none;
 	}
 	.challenge__img {
@@ -1553,7 +1605,7 @@ body {
 	height: 100vh;
 } */
 @media (max-width: 450px) {
-	.statistics__text{
+	.statistics__text {
 		font-size: 12px;
 	}
 	.header__title {
