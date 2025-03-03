@@ -1497,6 +1497,10 @@ body {
 	}
 }
 @media (max-width: 768px) {
+	.challenge__top p:nth-child(2),
+	.challenge__info p:nth-child(2){
+		display: none;
+	}
 	.challenge__img {
 		width: 100%;
 	}
